@@ -12,9 +12,6 @@ export function QuoteGarden() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getRandomQuote());
-  }, [dispatch]);
-
-  useEffect(() => {
     const handle = setInterval(() => {
       dispatch(getRandomQuote());
     }, 8000);
