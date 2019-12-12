@@ -3,17 +3,32 @@ import "./App.css";
 import { useSelector, useDispatch } from "react-redux";
 import { getRandomQuote } from "./store";
 
+import { ShootingStar } from "./components/ShootingStar";
+import { Spinner } from "./components/Spinner";
+
 function App() {
-  const data = useSelector(state => state.quoteGardenReducer);
-  console.log(data);
+  const { quoteText, quoteAuthor, isFetching } = useSelector(
+    state => state.quoteGardenReducer
+  );
 
   const dispatch = useDispatch();
-
   useEffect(() => {
     dispatch(getRandomQuote());
   }, [dispatch]);
 
-  return <div className="App"></div>;
+  return (
+    <div className="App">
+      {isFetching ? (
+        <Spinner />
+      ) : (
+        <>
+          <div className="quoteText">{quoteText}</div>
+          <div className="quoteAuthor">{quoteAuthor}</div>
+        </>
+      )}
+      <ShootingStar />
+    </div>
+  );
 }
 
 export default App;

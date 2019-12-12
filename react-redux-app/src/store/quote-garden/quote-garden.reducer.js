@@ -8,7 +8,7 @@ const initialState = {
   _id: "",
   quoteText: "",
   quoteAuthor: "",
-  isFetching: false,
+  isLoading: false,
   error: ""
 };
 

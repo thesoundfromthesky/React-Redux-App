@@ -4,6 +4,7 @@ import {
   getRandomQuoteFail
 } from "./quote-garden.actions";
 
+// https://github.com/pprathameshmore/QuoteGarden
 export const getRandomQuote = () => async dispatch => {
   dispatch(getRandomQuoteStart());
 
@@ -19,9 +20,7 @@ export const getRandomQuote = () => async dispatch => {
     const data = await response.json();
 
     dispatch(getRandomQuoteSuccess(data));
-    
   } catch (err) {
-
     console.err(`Fetch Error ${err}`);
     dispatch(getRandomQuoteFail(err));
   }
