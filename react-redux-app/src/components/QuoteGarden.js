@@ -14,6 +14,15 @@ export function QuoteGarden() {
     dispatch(getRandomQuote());
   }, [dispatch]);
 
+  useEffect(() => {
+    const handle = setInterval(() => {
+      dispatch(getRandomQuote());
+    }, 8000);
+    return () => {
+      clearInterval(handle);
+    };
+  }, [dispatch]);
+
   return (
     <>
       {isFetching ? (
@@ -21,7 +30,7 @@ export function QuoteGarden() {
       ) : (
         <div className="quote">
           <div className="quoteText">{quoteText}</div>
-          <div className="quoteAuthor">{quoteAuthor}</div>
+          <div className="quoteAuthor">{quoteAuthor && `-${quoteAuthor}`}</div>
         </div>
       )}
     </>
